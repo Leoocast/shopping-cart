@@ -6,14 +6,13 @@ export const currencyFormat = number =>
     
 export const getPerfectProductRoute = name => {
 
-    const result = name.replace(/,/g, '-')   //[Que-onda, que andas, haciendo-hoy]
-                       .split(' ')             //[Que-onda,que,andas,haciendo-hoy]
-                       .join('-')              //Que-onda-que-andas-haciendo--hoy]
-                       .split('-')             //[Que, onda, que, andas, haciendo, '', hoy]
-                       .filter(r => r !== '' ) //[Que, onda, que, andas, haciendo, hoy]
-                       .join('-')              //[Que-onda-que-andas-haciendo-hoy] :)
+    const normalizedName = name.trim()
+                               .toLowerCase()
+                               .normalize("NFD")
+                               .replace(/[\u0300-\u036f]/g, "")
 
-    
-    //Removemos acentos
-    return result.normalize("NFD").replace(/[\u0300-\u036f]/g, "")
+    const result = normalizedName.replace(/[^a-zA-Z0-9]|\s+/g, '-')
+                                 .replace(/-+/g, '-')
+                                 .replace(/\-+$/, '')
+    return result
 }
