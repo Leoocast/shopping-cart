@@ -8,5 +8,8 @@ module.exports = {
       return config
     },
     webpack5: false,
+    images: {
+      domains: ['s3-us-west-2.amazonaws.com'],
+    },
   }
   

@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { getProducts } from './api/products'
 
-import { Product } from '../components/pages'
+import { Product } from '../components/pages/home'
 
 export default function Home({products}) {
 
