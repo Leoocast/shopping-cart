@@ -7,6 +7,6 @@ module.exports = {
   
       return config
     },
-    webpack5: false
+    webpack5: false,
   }
   

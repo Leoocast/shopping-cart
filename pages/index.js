@@ -1,19 +1,29 @@
-import Head from 'next/head'
-import { Input } from '../styles/components'
+import { useState } from 'react'
+import { getProducts } from './api/products'
 
-export default function Home() {
+import { Product } from '../components/pages'
 
+export default function Home({products}) {
+
+  //Intenté pasar con el spread operator todas las props así:
+  //{...product} pero me daba error e investigué y creo que es problema del framework.
+  const Products = () => products.map(({id, name, cover, price}) => (
+    <Product key={id+name} id={id} name={name} cover={cover} price={price}/>
+  ))
+  
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen py-2">
-      <Head>
-        <title>Create Next App</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-
-      <main className="flex flex-col items-center justify-center w-full flex-1 px-20 text-center">
-
-        <Input/>
-      </main>
+    <div className="flex flex-wrap justify-around">
+      <Products/>
     </div>
   )
+}
+
+export async function getStaticProps(){
+  const products = await getProducts()
+
+  return {
+    props: {
+      products
+    }
+  }
 }
