@@ -1,18 +1,12 @@
-import { useEffect, useState } from 'react'
 import { getProducts } from './api/products'
-
 import { Product } from '../components/pages/home'
-import { NewDialog } from '../components/base/Dialog'
+import { getPerfectProductRoute } from '../helpers'
 
 export default function Home({products}) {
 
-  const [currentProduct, setCurrentProduct] = useState({})
-  const [openModal, Modal] = NewDialog(currentProduct)
-  
-  const handleProductClick = product => {
-    setCurrentProduct(product)
-    openModal()
-  }
+  const formattedRoute = route => `${location.origin}/producto/`+ getPerfectProductRoute(route) 
+
+  const handleProductClick = ({name}) => window.open(formattedRoute(name), '_blank')
 
   return (
     <div className="flex flex-wrap justify-around">
@@ -23,7 +17,6 @@ export default function Home({products}) {
           onClickProduct={() => handleProductClick(product)} 
           />
       ))}
-      <Modal/>
     </div>
   )
 }
