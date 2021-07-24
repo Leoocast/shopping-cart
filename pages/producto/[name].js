@@ -1,16 +1,15 @@
 import { getProducts } from '../api/products'
 import { getPerfectProductRoute } from '../../helpers'
 
-export default function Producto({id, name, price, cover}) {
+import { SingleProductPage } from '../../components/pages/producto/SingleProductPage'
 
-    console.log("Producto: \n", id,name,price, cover)
+export default function Producto(props) {
 
-    //Verificar esto en el nombre de los productos // y el Eliminador de pelo sabrá porque no funca
   return (
-    <div className="flex flex-wrap justify-around">
-        {JSON.stringify([id, name, price, cover], null,4)}
-    </div>
-  )
+      <>
+        <SingleProductPage {...props}/>
+      </>   
+    )
 }
 
 export async function getStaticProps({params: {name}}){
@@ -18,7 +17,7 @@ export async function getStaticProps({params: {name}}){
     const product = await getProducts(name);
 
     return {
-        props: {...product}
+        props: product
     }
 }
 
@@ -27,7 +26,7 @@ export async function getStaticPaths() {
 
     const paths = data.map(product => ({
         params: {name: getPerfectProductRoute(product.name.toString())},
-    }));
+    }))
 
     return {paths, fallback: false}
 }

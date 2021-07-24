@@ -1,10 +1,10 @@
 import tw, { css, styled } from 'twin.macro'
 
 export default {
-    CartItemName: styled.h1(()=>[
+    CartItemName: styled.h1(({isDetail = false})=>[
         tw`text-lg font-normal`,
         css`
-            width: 11rem;
+            width: ${isDetail ? '20rem' : '11rem'};
             overflow: hidden;
             line-height:2rem;
             max-height: 2rem;

@@ -1,23 +1,12 @@
 import { getProducts } from './api/products'
-import { Product } from '../components/pages/home'
-import { getPerfectProductRoute } from '../helpers'
+import { ProductsPage } from '../components/pages/inicio/ProductsPage'
 
-export default function Home({products}) {
-
-  const formattedRoute = route => `${location.origin}/producto/`+ getPerfectProductRoute(route) 
-
-  const handleProductClick = ({name}) => window.open(formattedRoute(name), '_blank')
+export default function Inicio(props) {
 
   return (
-    <div className="flex flex-wrap justify-around">
-      {products.map(product => (
-        <Product 
-          key={product.id+product.name} 
-          {...product}
-          onClickProduct={() => handleProductClick(product)} 
-          />
-      ))}
-    </div>
+    <>
+      <ProductsPage {...props}/>
+    </>
   )
 }
 
