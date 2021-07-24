@@ -42,7 +42,7 @@ export const SingleProductPage = ({id, name, price, cover}) => {
                                             Cantidad
                                         </div>
                                         <div className="text-2xl flex flex-row">
-                                            <InputQuantity/>
+                                            {InputQuantity()}
                                         </div>
                                     </div>
                                     <div className="mr-5">
@@ -54,7 +54,7 @@ export const SingleProductPage = ({id, name, price, cover}) => {
                                         </div>
                                     </div>
                                 </div>
-                                <div class="mt-5 mr-10 text-right text-gray-400">*El precio contempla importación, envío e I.V.A. </div>
+                                <div className="mt-5 mr-10 text-right text-gray-400">*El precio contempla importación, envío e I.V.A. </div>
                                 <div className="inline-block align-bottom mt-6 flex justify-end mr-12">
                                     <Buttons.AddToCart>
                                         AGREGAR AL CARRITO

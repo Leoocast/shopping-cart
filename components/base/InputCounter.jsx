@@ -2,6 +2,8 @@ import React from 'react'
 
 import { useCounter } from '../../hooks/useCounter'
 
+import { Inputs } from '../../styles/components/'
+
 export const InputCounter = () => {
 
     const quantityHandler = {
@@ -12,7 +14,9 @@ export const InputCounter = () => {
 
     const [quantity, setQuantity, increment, decrement] = useCounter(quantityHandler)
 
-    const handleQuantityChange = ({target}) => setQuantity(target.value)
+    const handleQuantityChange = ({target}) => {
+        setQuantity(target.value)
+    }
 
     return [
         quantity,
@@ -23,16 +27,16 @@ export const InputCounter = () => {
                 <svg className="fill-current text-gray-600 w-3" viewBox="0 0 448 512"><path d="M416 208H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h384c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z"/>
                 </svg>
             </button>
-            
-            <input 
+               
+            <Inputs.Quantity
                 onChange={handleQuantityChange} 
                 value={quantity} 
                 max={quantityHandler.max} 
                 min={quantityHandler} 
-                className="mx-2 border text-center w-32" 
                 placeholder="1" 
-                type="number"/>
-
+                type="number"
+            />
+            
             <button 
                 className="p-3 h-10" 
                 onClick={increment}>

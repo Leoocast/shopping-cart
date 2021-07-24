@@ -25,6 +25,8 @@ export const useCounter = ({initialState, min = 1, max = 125000}) => {
 
     const setQuantity = quantity => {
 
+        console.log(quantity)
+
         if(quantity > max)
             return setState(max)
         
