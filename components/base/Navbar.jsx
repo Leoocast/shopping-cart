@@ -1,4 +1,3 @@
-/* This example requires Tailwind CSS v2.0+ */
 import { Fragment } from 'react'
 import { Popover, Transition } from '@headlessui/react'
 import { HomeIcon, MenuIcon, XIcon, ShoppingCartIcon} from '@heroicons/react/solid'
@@ -12,34 +11,30 @@ const routes = [
     {
         name: 'Inicio',
         href: '/',
-        Icon: HomeIcon
+        Icon: () => <HomeIcon className="w-7" size={10}/>
     },
     {
         name: 'Ver carrito',
         href: '/cart',
-        Icon: ShoppingCartIcon
+        Icon: () => <ShoppingCartIcon className="w-7" size={10}/>
     }
 ]
 
 const Routes = ({isMobile = false}) => routes.map(({name, Icon, href}) =>(
     <Link key={name} href={href}>
-        <MenuRoute isMobile={isMobile} className="inline-block align-baseline">
-            <span>
-                <Icon/>
-            </span>
-            <span>
-                {name}
-            </span>
+        <MenuRoute isMobile={isMobile} className="flex items-center">
+            <span><Icon/></span>
+            <span>{name}</span>
         </MenuRoute>
     </Link>
 ))
 
 export const Navbar = () => (
-    <Popover className="relative bg-white">
+    <Popover className="relative bg-white sticky top-0 z-50 bg-opacity-30 backdrop-blur-lg border-0">
         {({ open }) => (
         <>
-            <div className="max-w-7xl mx-auto px-4 sm:px-6">
-            <div className="flex justify-between items-center border-b-2 border-gray-100 py-6 md:justify-start md:space-x-10">
+            <div style={{maxWidth: "88rem"}} className="mx-auto px-4 sm:px-6">
+            <div className="flex justify-between items-center py-6 md:justify-start md:space-x-10">
                 <div className="flex justify-start lg:w-0 lg:flex-1">
                 <Link href='/'>
                     <a>

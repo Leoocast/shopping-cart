@@ -2,9 +2,9 @@ import tw, { css, styled } from 'twin.macro'
 
 export default {
     CartItemName: styled.h1(()=>[
-        tw`flex text-xl font-semibold`,
+        tw`text-lg font-normal`,
         css`
-            width: 17rem;
+            width: 11rem;
             overflow: hidden;
             line-height:2rem;
             max-height: 2rem;

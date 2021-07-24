@@ -13,7 +13,7 @@ function MyApp({ Component, pageProps }) {
           <link rel="icon" href="/favicon.ico" />
         </Head>
 
-          <main className="flex flex-col items-center w-full flex-1 px-20 text-center">
+          <main className="flex flex-col items-center w-10/12 flex-1 px-20 text-center">
             <Component {...pageProps} />
           </main>
       </div>
