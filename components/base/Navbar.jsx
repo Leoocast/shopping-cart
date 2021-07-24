@@ -1,4 +1,4 @@
-import { Fragment } from 'react'
+import { Fragment, useEffect } from 'react'
 import { Popover, Transition } from '@headlessui/react'
 import { HomeIcon, MenuIcon, XIcon, ShoppingCartIcon} from '@heroicons/react/solid'
 
@@ -6,6 +6,7 @@ import { MeruLogo } from '../resources'
 
 import Link from 'next/link'
 import { MenuRoute } from '../../styles/components'
+import { useAppContext } from '../context/'
 
 const routes = [
     {
@@ -20,45 +21,66 @@ const routes = [
     }
 ]
 
-const Routes = ({isMobile = false}) => routes.map(({name, Icon, href}) =>(
-    <Link key={name} href={href}>
-        <MenuRoute isMobile={isMobile} className="flex items-center">
-            <span><Icon/></span>
-            <span>{name}</span>
-        </MenuRoute>
-    </Link>
-))
+const Routes = ({isMobile = false}) => 
+{
+    const [appContext] = useAppContext()
 
-export const Navbar = () => (
-    <Popover className="relative bg-white sticky top-0 z-50 bg-opacity-30 backdrop-blur-lg border-0">
-        {({ open }) => (
-        <>
-            <div style={{maxWidth: "88rem"}} className="mx-auto px-4 sm:px-6">
-            <div className="flex justify-between items-center py-6 md:justify-start md:space-x-10">
-                <div className="flex justify-start lg:w-0 lg:flex-1">
-                <Link href='/'>
-                    <a>
-                        <MeruLogo />
-                    </a>
-                </Link>
-                </div>
-                <div className="-mr-2 -my-2 md:hidden">
-                <Popover.Button className="bg-white rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500">
-                    <span className="sr-only">Abrir Menú</span>
-                    <MenuIcon className="h-6 w-6" aria-hidden="true" />
-                </Popover.Button>
-                </div>
-                <Popover.Group as="nav" className="hidden md:flex space-x-10">
-                    <Routes />
-                </Popover.Group>
-            </div>
-            </div>
+    const totalItems = appContext.cart.reduce((c, n) => c + n.quantity, 0)
+  
+    //Tuve problemas con la hidratación aquí, investigué pero no pude solucionarlo :(
+    return (
+        routes.map(({name, Icon, href}) =>(
+            <Link key={name} href={href}>
+                <MenuRoute isMobile={isMobile} className="flex items-center">
+                    <span><Icon/></span>
+                    <span>{name}</span>
+                    {
+                        href === '/cart'
+                        ? 
+                        <span>({totalItems})</span> 
+                        : <script/>
+                    }
+                   
+                </MenuRoute>
+            </Link>
+        ))
+    )
+}
 
-            <NavbarMobile show={open}/>
-        </>
-        )}
-    </Popover>
-)
+export const Navbar = () => {
+
+    
+    return (
+        <Popover className="relative bg-white sticky top-0 z-50 bg-opacity-30 backdrop-blur-lg border-0">
+            {({ open }) => (
+            <>
+                <div style={{maxWidth: "88rem"}} className="mx-auto px-4 sm:px-6">
+                <div className="flex justify-between items-center py-6 md:justify-start md:space-x-10">
+                    <div className="flex justify-start lg:w-0 lg:flex-1">
+                    <Link href='/'>
+                        <a>
+                            <MeruLogo />
+                        </a>
+                    </Link>
+                    </div>
+                    <div className="-mr-2 -my-2 md:hidden">
+                    <Popover.Button className="bg-white rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500">
+                        <span className="sr-only">Abrir Menú</span>
+                        <MenuIcon className="h-6 w-6" aria-hidden="true" />
+                    </Popover.Button>
+                    </div>
+                    <Popover.Group as="nav" className="hidden md:flex space-x-10">
+                        <Routes />
+                    </Popover.Group>
+                </div>
+                </div>
+    
+                <NavbarMobile show={open}/>
+            </>
+            )}
+        </Popover>
+    )
+} 
 
 const NavbarMobile = ({show}) => (
     <Transition

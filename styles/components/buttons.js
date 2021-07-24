@@ -4,6 +4,6 @@ export default {
     AddToCart: tw.button`w-48 flex h-10 items-center justify-center rounded-md border border-gray-300
                          hover:bg-blue-900 hover:text-white 
                          transition duration-100 ease-in-out
-                         transform hover:scale-110
+                         transform hover:scale-110 active:scale-95
                     `
 }

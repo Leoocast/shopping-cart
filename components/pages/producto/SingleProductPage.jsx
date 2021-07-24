@@ -1,8 +1,7 @@
 import { SingleProduct, Buttons } from '../../../styles/components'
-
 import { InputCounter } from '../../base/InputCounter'
-
 import { BreadCrumbs } from '../../base/BreadCrumbs'
+import { useCart } from '../../../hooks/useCart'
 
 const Price = ({value}) => (
     <>
@@ -16,7 +15,22 @@ export const SingleProductPage = ({id, name, price, cover}) => {
 
     const [quantity, InputQuantity] = InputCounter()
 
+    const { addItem } = useCart()
+
     const customizedPrice = price.split('.')
+
+    const onClickAddToCart = () => {
+
+        const product = {
+            id,
+            name,
+            price,
+            cover,
+            quantity
+        }
+
+        addItem(product)
+    }
 
   return (
         <>
@@ -54,9 +68,9 @@ export const SingleProductPage = ({id, name, price, cover}) => {
                                         </div>
                                     </div>
                                 </div>
-                                <div className="mt-5 mr-10 text-right text-gray-400">*El precio contempla importación, envío e I.V.A. </div>
+                                <div className="mt-5 mr-10 text-right text-gray-400">*El precio contempla importación, envío e I.V.A.</div>
                                 <div className="inline-block align-bottom mt-6 flex justify-end mr-12">
-                                    <Buttons.AddToCart>
+                                    <Buttons.AddToCart onClick={onClickAddToCart}>
                                         AGREGAR AL CARRITO
                                     </Buttons.AddToCart>
                                 </div>
