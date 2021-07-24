@@ -1,19 +1,29 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { getProducts } from './api/products'
 
 import { Product } from '../components/pages/home'
+import { NewDialog } from '../components/base/Dialog'
 
 export default function Home({products}) {
 
-  //Intenté pasar con el spread operator todas las props así:
-  //{...product} pero me daba error e investigué y creo que es problema del framework.
-  const Products = () => products.map(({id, name, cover, price}) => (
-    <Product key={id+name} id={id} name={name} cover={cover} price={price}/>
-  ))
+  const [currentProduct, setCurrentProduct] = useState({})
+  const [openModal, Modal] = NewDialog(currentProduct)
   
+  const handleProductClick = product => {
+    setCurrentProduct(product)
+    openModal()
+  }
+
   return (
     <div className="flex flex-wrap justify-around">
-      <Products/>
+      {products.map(product => (
+        <Product 
+          key={product.id+product.name} 
+          {...product}
+          onClickProduct={() => handleProductClick(product)} 
+          />
+      ))}
+      <Modal/>
     </div>
   )
 }

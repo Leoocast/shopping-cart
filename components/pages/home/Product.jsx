@@ -3,10 +3,10 @@ import { Buttons, Text, ProductContainer } from '../../../styles/components'
 import { currencyFormat } from '../../../helpers'
 import { ProductImage } from './ProductImage'
 
-const Product = ({id, name, cover, price}) => {
+const Product = ({onClickProduct, name, cover, price}) => {
 
     return (
-        <ProductContainer >
+        <ProductContainer onClick={onClickProduct}>
             <div className="flex-auto w-56 h-56 relative">
                 <ProductImage cover={cover} name={name}/>
             </div>
