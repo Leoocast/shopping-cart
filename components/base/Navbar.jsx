@@ -7,6 +7,7 @@ import { MeruLogo } from '../resources'
 import Link from 'next/link'
 import { MenuRoute } from '../../styles/components'
 import { useAppContext } from '../context/'
+import { currencyFormat } from '../../helpers'
 
 const routes = [
     {
@@ -37,7 +38,7 @@ const Routes = ({isMobile = false}) =>
                     {
                         href === '/cart'
                         ? 
-                        <span>({totalItems})</span> 
+                        <span>({currencyFormat(totalItems)})</span> 
                         : <script/>
                     }
                    

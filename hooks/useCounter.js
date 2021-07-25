@@ -24,15 +24,18 @@ export const useCounter = ({initialState, min = 1, max = 125000}) => {
     }
 
     const setQuantity = quantity => {
+        
+        const parseQuantity = parseInt(quantity)
+        
+        if(Number.isNaN(parseQuantity))
+            return setState(state)
 
-        console.log(quantity)
-
-        if(quantity > max)
+        if(parseQuantity > max)
             return setState(max)
         
-        if(quantity < min)
+        if(parseQuantity < min)
             return setState(min)
-            
+        
         setState(quantity)
     }
 

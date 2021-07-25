@@ -2,6 +2,7 @@ import { SingleProduct, Buttons } from '../../../styles/components'
 import { InputCounter } from '../../base/InputCounter'
 import { BreadCrumbs } from '../../base/BreadCrumbs'
 import { useCart } from '../../../hooks/useCart'
+import { currencyFormat } from '../../../helpers'
 
 const Price = ({value}) => (
     <>
@@ -13,11 +14,11 @@ const Price = ({value}) => (
 
 export const SingleProductPage = ({id, name, price, cover}) => {
 
-    const [quantity, InputQuantity] = InputCounter()
+    const [quantity, InputQuantity] = InputCounter({exportQuantity: true})
 
     const { addItem } = useCart()
 
-    const customizedPrice = price.split('.')
+    const customizedPrice = currencyFormat(price).split('.')
 
     const onClickAddToCart = () => {
 
@@ -26,7 +27,7 @@ export const SingleProductPage = ({id, name, price, cover}) => {
             name,
             price,
             cover,
-            quantity
+            quantity: parseInt(quantity)
         }
 
         addItem(product)
@@ -36,7 +37,7 @@ export const SingleProductPage = ({id, name, price, cover}) => {
         <>
             <BreadCrumbs levelName={name}/>
             <SingleProduct.Wrapper>
-                <SingleProduct.Container>
+                <SingleProduct.Container className="rounded-lg border-2 border-opacity-30">
                     <div className="md:flex items-center -mx-10">
                         <div className="w-full md:w-1/2 px-10 mb-10 md:mb-0">
                             <div className="relative">

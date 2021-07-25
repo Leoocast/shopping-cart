@@ -26,8 +26,27 @@ export const useCart = () => {
         setCart(newCart)
         setContext({...appContext, cart: newCart})
     }
+    
+    const removeItem = id => {
+        
+        const newCart = cart.filter(item => item.id !== id)
+        
+        setCart(newCart)
+        setContext({...appContext, cart: newCart})
+    }
+
+    const updateQuantity = (id, newQuantity) => {
+        const newCart =  cart.map(item => 
+                            item.id === id
+                            ? {...item, quantity: newQuantity} 
+                            : item
+                         )
+        
+        setCart(newCart)
+        setContext({...appContext, cart: newCart})
+    }
 
     const getTotalItems = () => cart.reduce((c,n) => c + n.quantity, 0)
 
-    return {cart, addItem, getTotalItems}
+    return {cart, addItem, getTotalItems, removeItem, updateQuantity}
 }
