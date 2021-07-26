@@ -1,4 +1,5 @@
 import { getProducts } from './api/products'
+
 import { ProductsPage } from '../components/pages/inicio/ProductsPage'
 
 export default function Inicio(props) {

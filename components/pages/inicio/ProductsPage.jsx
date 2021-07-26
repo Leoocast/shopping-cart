@@ -1,4 +1,5 @@
 import { Product } from './Product'
+
 import { getPerfectProductRoute } from '../../../helpers'
 
 export const ProductsPage = ({products}) => {

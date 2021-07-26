@@ -1,7 +1,8 @@
 import { getProducts } from '../api/products'
-import { getPerfectProductRoute } from '../../helpers'
 
 import { SingleProductPage } from '../../components/pages/producto/SingleProductPage'
+import { getPerfectProductRoute } from '../../helpers'
+
 
 export default function Producto(props) {
 

@@ -1,9 +1,10 @@
 import { SingleProduct, Buttons } from '../../../styles/components'
+
 import { InputCounter } from '../../base/InputCounter'
 import { BreadCrumbs } from '../../base/BreadCrumbs'
+
 import { useCart } from '../../../hooks/useCart'
 import { currencyFormat } from '../../../helpers'
-import { useState } from 'react'
 
 const Price = ({value}) => (
     <>
@@ -46,7 +47,7 @@ export const SingleProductPage = ({id, name, price, cover}) => {
         <>
             <BreadCrumbs levelName={name}/>
             <SingleProduct.Wrapper>
-                <SingleProduct.Container className="rounded-lg border-2 border-opacity-30">
+                <SingleProduct.Container>
                     <div className="md:flex items-center -mx-10">
                         <div className="w-full md:w-1/2 px-10 mb-10 md:mb-0">
                             <div className="relative">
