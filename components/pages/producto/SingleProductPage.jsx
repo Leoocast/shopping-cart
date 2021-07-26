@@ -17,7 +17,6 @@ export const SingleProductPage = ({id, name, price, cover}) => {
 
     const [quantity, InputQuantity, setQuantity, blurAffected, setBlurAffected] = InputCounter({exportQuantity: true})
 
-
     const { addItem } = useCart()
 
     const customizedPrice = currencyFormat(price * quantity).split('.')

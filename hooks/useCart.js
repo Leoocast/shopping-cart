@@ -51,11 +51,23 @@ export const useCart = () => {
         setContext({...appContext, cart: newCart})
     }
 
-    const getTotalItems = () => cart.reduce((c,n) => {
+    // const getTotalItems = () => cart.reduce((c,n) => {
 
-        return c + (Number.isNaN(n.quantity) ? 0 : n.quantity)
+    //     return c + (Number.isNaN(n.quantity) ? 0 : n.quantity)
 
-    }, 0)
+    // }, 0)
 
-    return {cart, addItem, getTotalItems, removeItem, updateQuantity}
+    const getTotals = () => cart.reduce((returnedValue,n) => {
+
+        const quantity = (Number.isNaN(n.quantity) ? 0 : n.quantity)
+
+        returnedValue.totalItems += quantity
+        
+        returnedValue.totalPrice += (quantity * n.price)
+
+        return returnedValue
+
+    }, {totalItems: 0, totalPrice: 0})
+
+    return {cart, addItem, removeItem, updateQuantity, getTotals}
 }

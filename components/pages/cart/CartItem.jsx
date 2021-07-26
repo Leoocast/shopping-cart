@@ -38,12 +38,12 @@ export const CartItem = ({id, name, cover, price, quantity, onClickRemove, onCha
             </td>
             <td className="w-20 hidden text-right md:table-cell">
                 <span className="text-sm lg:text-base font-medium">
-                    $ {currencyFormat(price)}
+                    ${currencyFormat(price)}
                 </span>
             </td>
             <td className="w-32 text-right">
                 <span className="text-sm lg:text-base font-medium">
-                    $ {currencyFormat(total)}
+                    ${currencyFormat(total)}
                 </span>
             </td>
         </tr>
