@@ -5,7 +5,7 @@ import { ProductImage } from './ProductImage'
 
 export const Product = ({onClickProduct, name, cover, price}) => (
     <ProductContainer onClick={onClickProduct}>
-        <div className="flex-auto w-56 h-56 relative">
+        <div className="flex-auto md:w-56 h-56 relative w-full">
             <ProductImage cover={cover} name={name}/>
         </div>
         <div className="flex-auto p-4">

@@ -4,7 +4,7 @@ import { Text } from '../../styles/global'
 
 export const BreadCrumbs = ({levelName}) => {
     return (
-        <nav className="text-black font-bold my-8 self-start" aria-label="Breadcrumb">
+        <nav className="text-black font-bold my-8 self-start pl-3" aria-label="Breadcrumb">
             <ol className="list-none p-0 inline-flex">
                 <li className="flex items-center">
                     <Link href="/">

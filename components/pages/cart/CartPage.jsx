@@ -19,9 +19,9 @@ export const CartPage = () => {
   
     return (
     <>
-        <div className="container mx-auto ">
+        <div className="w-full">
             <div className="flex justify-center my-6">
-                <div className="flex flex-col w-full p-8 text-gray-800 bg-white shadow-lg pin-r pin-y md:w-4/5 lg:w-4/5 rounded-lg border-2 border-opacity-30">
+                <div className=" flex flex-col w-full p-8 text-gray-800 bg-white shadow-lg pin-r pin-y rounded-lg border-2 border-opacity-30">
                     <CartHeader handleCleanCart={handleCleanCart} totalItems={totalItems}/>
                     <CartBody 
                         cart={cart} 

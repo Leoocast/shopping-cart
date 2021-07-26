@@ -10,6 +10,13 @@ import { useAppContext } from '../context/'
 import { currencyFormat } from '../../helpers'
 import 'animate.css'
 
+
+const WithPopOverButton = (Component) => (
+    <Popover.Button>
+        {Component}
+    </Popover.Button>
+)
+
 const routes = [
     {
         name: 'Inicio',
@@ -29,8 +36,10 @@ const Routes = ({isMobile = false}) =>
 
     const totalItems = appContext.cart.reduce((c, n) => c + n.quantity, 0)
 
-    return (
-        routes.map(({name, Icon, href}) =>(
+    return routes.map(({name, Icon, href}) => {
+
+        const ReturnComponent = () =>
+        (
             <Link key={name} href={href}>
                 <MenuRoute isMobile={isMobile} isCart={true} className="flex items-center">
                     <span><Icon/></span>
@@ -44,8 +53,13 @@ const Routes = ({isMobile = false}) =>
                    
                 </MenuRoute>
             </Link>
-        ))
-    )
+        )
+
+        if(isMobile)
+            return WithPopOverButton(ReturnComponent)
+            
+        return ReturnComponent
+    })
 }
 
 export const Navbar = () => {

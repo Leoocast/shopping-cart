@@ -9,7 +9,7 @@ export const ProductsPage = ({products}) => {
   const handleProductClick = ({name}) => window.open(formattedRoute(name), '_blank')
 
   return (
-    <div className="flex flex-wrap justify-around">
+    <div className="flex flex-wrap justify-around w-full">
       {products.map(product => (
         <Product 
           key={product.id+product.name} 

@@ -5,4 +5,6 @@ export default tw.div`
                     border-2 border-opacity-30 
                     hover:shadow-2xl hover:cursor-pointer
                     transition   
+                    w-full
+                    md:(w-auto)
                 `

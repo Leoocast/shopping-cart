@@ -12,7 +12,7 @@ export default {
             text-overflow: ellipsis;
             -webkit-line-clamp: 4;
         `,
-        tw`resize-y 2xl:(resize-none)`
+        tw`resize-y`
     ]),
     StyledTable: styled.table(()=>[
         tw`
