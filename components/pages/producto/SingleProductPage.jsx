@@ -6,6 +6,8 @@ import { BreadCrumbs } from '../../base/BreadCrumbs'
 import { useCart } from '../../../hooks/useCart'
 import { currencyFormat, messages } from '../../../helpers'
 
+import { SingleProductSeo } from '../../seo//SingleProductSeo'
+
 const Price = ({value}) => (
     <>
         <span className="text-xl leading-none align-baseline price">$</span>
@@ -84,6 +86,7 @@ export const SingleProductPage = ({id, name, price, cover}) => {
 
   return (
         <>
+            <SingleProductSeo name={name} cover={cover}/>
             <BreadCrumbs levelName={name}/>
             <SingleProduct.Wrapper>
                 <SingleProduct.Container>

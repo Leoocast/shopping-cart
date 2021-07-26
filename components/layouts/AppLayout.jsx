@@ -4,12 +4,11 @@ import {Navbar } from '../base/Navbar'
 
 import { Layout } from '../../styles/components'
 
+import { DocumentSeo } from '../seo/DocumentSeo'
+
 export const AppLayout = ({children}) => (
     <>
-        <Head>
-            <title>Meru - Shopping Cart</title>
-            <link rel="icon" href="/favicon.ico" />
-        </Head>
+        <DocumentSeo />
         <div>
             <Navbar />
             <div className="flex flex-col items-center justify-center py-2">
