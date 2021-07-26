@@ -3,24 +3,33 @@ import { InputCounter } from '../../base/InputCounter'
 import { BreadCrumbs } from '../../base/BreadCrumbs'
 import { useCart } from '../../../hooks/useCart'
 import { currencyFormat } from '../../../helpers'
+import { useState } from 'react'
 
 const Price = ({value}) => (
     <>
         <span className="text-2xl leading-none align-baseline">$</span>
-        <span className="font-bold text-5xl leading-none align-baseline">{value[0]}</span>
+        <span className="font-bold text-3xl leading-none align-baseline">{value[0]}</span>
         <span className="text-2xl leading-none align-baseline">.{value[1]} MXN *</span>
     </>
 ) 
 
 export const SingleProductPage = ({id, name, price, cover}) => {
 
-    const [quantity, InputQuantity] = InputCounter({exportQuantity: true})
+    const [quantity, InputQuantity, setQuantity, blurAffected, setBlurAffected] = InputCounter({exportQuantity: true})
+
 
     const { addItem } = useCart()
 
-    const customizedPrice = currencyFormat(price).split('.')
+    const customizedPrice = currencyFormat(price * quantity).split('.')
 
-    const onClickAddToCart = () => {
+    const onClickAddToCart = e => {
+
+        //Si el input esta vacío, que no agregue uno por accidente.
+        if(blurAffected && quantity === 1){
+            setBlurAffected(false)
+            e.preventDefault()
+            return
+        }
 
         const product = {
             id,
@@ -31,6 +40,7 @@ export const SingleProductPage = ({id, name, price, cover}) => {
         }
 
         addItem(product)
+        setQuantity(1)
     }
 
   return (

@@ -1,42 +1,48 @@
 import { useState } from 'react'
+import { tryParseInt } from '../helpers'
 
 export const useCounter = ({initialState, min = 1, max = 125000}) => {
 
     const [state, setState] = useState(initialState < min ? min : initialState)
 
     const increment = () => {
-        const newState = state + 1
+
+        const parsedState = tryParseInt(state)
+
+        const newState = parsedState + 1
 
         if(newState > max)
             return setState(max)
 
-        setState(state + 1)
+        setState(newState)
     }
 
     const decrement = () => {
 
-        const newState = state - 1
+        const parsedState = tryParseInt(state)
+
+        const newState = parsedState - 1
 
         if(newState < min)
             return setState(min)
 
-        setState(state - 1)
+        setState(newState)
     }
 
     const setQuantity = quantity => {
-        
-        const parseQuantity = parseInt(quantity)
-        
-        if(Number.isNaN(parseQuantity))
-            return setState(state)
 
-        if(parseQuantity > max)
+        const parsedQuantity = tryParseInt(quantity)
+        
+        if(parsedQuantity === 0)
+            return setState('')
+
+        if(parsedQuantity > max)
             return setState(max)
         
-        if(parseQuantity < min)
+        if(parsedQuantity < min)
             return setState(min)
         
-        setState(quantity)
+        setState(parsedQuantity)
     }
 
     return [state, setQuantity, increment, decrement]

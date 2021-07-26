@@ -13,6 +13,8 @@ export const CartItem = ({id, name, cover, price, quantity, onClickRemove, onCha
 
     const InputQuantity = InputCounter({exportQuantity: false}, quantityHandler)
 
+    const total = price * (quantity === '' ? 0 : quantity)
+
     return (
         <tr className="mt-5">
             <td className="hidden pb-4 md:table-cell">
@@ -41,7 +43,7 @@ export const CartItem = ({id, name, cover, price, quantity, onClickRemove, onCha
             </td>
             <td className="w-32 text-right">
                 <span className="text-sm lg:text-base font-medium">
-                    $ {currencyFormat(price * quantity)}
+                    $ {currencyFormat(total)}
                 </span>
             </td>
         </tr>

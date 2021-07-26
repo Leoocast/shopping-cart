@@ -11,7 +11,8 @@ export const CartPage = () => {
 
     const totalItems = getTotalItems()
 
-    //Creé closures para mantener la uniformidad del seteo de los clicks.
+    //Creé closures para mantener la uniformidad del seteo de los clicks, además me permitió 
+    //pasar las funciones del carro hacia los hijos y a partir de ello crear una función personalizada para cada hijo.
     const handleRemoveItem = id => {
         return () => {
             removeItem(id)
@@ -19,6 +20,7 @@ export const CartPage = () => {
     }
 
     const customQuantityChange = id => {
+        
         return newQuantity => {
             updateQuantity(id, newQuantity)
         }

@@ -13,3 +13,18 @@ export const getPerfectProductRoute = name => {
                                  .replace(/\-+$/, '')
     return result
 }
+
+export const tryParseInt = (str, defaultValue = 0) => {
+    
+    if(typeof str === 'number')
+        return str
+
+    let retValue = defaultValue
+
+    if(str !== null) 
+        if(str.length > 0) 
+            if (!isNaN(str)) 
+                retValue = parseInt(str)
+ 
+    return retValue
+}

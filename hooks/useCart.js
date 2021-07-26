@@ -1,6 +1,7 @@
-import { useState, useEffect } from 'react'
 import { useLocalStorage } from './useLocalStorage'
 import { useAppContext } from '../components/context'
+
+import { tryParseInt } from '../helpers/'
 
 export const useCart = () => {
 
@@ -36,9 +37,13 @@ export const useCart = () => {
     }
 
     const updateQuantity = (id, newQuantity) => {
+
+        //Cuando se ingresa con teclado, lo lee como string
+        const parsedQuantity = tryParseInt(newQuantity)
+
         const newCart =  cart.map(item => 
                             item.id === id
-                            ? {...item, quantity: newQuantity} 
+                            ? {...item, quantity: parsedQuantity} 
                             : item
                          )
         
@@ -46,7 +51,11 @@ export const useCart = () => {
         setContext({...appContext, cart: newCart})
     }
 
-    const getTotalItems = () => cart.reduce((c,n) => c + n.quantity, 0)
+    const getTotalItems = () => cart.reduce((c,n) => {
+
+        return c + (Number.isNaN(n.quantity) ? 0 : n.quantity)
+
+    }, 0)
 
     return {cart, addItem, getTotalItems, removeItem, updateQuantity}
 }
