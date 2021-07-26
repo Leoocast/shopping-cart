@@ -3,6 +3,7 @@ import tw, { css, styled } from 'twin.macro'
 export default {
     Quantity: styled.input(()=>[
         tw`
+            mt-3
             mx-2 border text-center w-32
             sm:(w-32 text-lg)
             md:(w-32)

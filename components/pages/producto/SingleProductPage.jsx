@@ -6,13 +6,21 @@ import { BreadCrumbs } from '../../base/BreadCrumbs'
 import { useCart } from '../../../hooks/useCart'
 import { currencyFormat } from '../../../helpers'
 
-const Price = ({value}) => (
-    <>
-        <span className="text-2xl leading-none align-baseline price">$</span>
-        <span className="font-bold text-3xl leading-none align-baseline price">{value[0]}</span>
-        <span className="text-2xl leading-none align-baseline price">.{value[1]} MXN *</span>
-    </>
-) 
+const Price = ({value}) => {
+
+    console.log(value)
+
+    return (
+        <>
+            <span className="text-xl leading-none align-baseline price">$</span>
+            <span className="font-bold text-2xl leading-none align-baseline price">{value[0]}</span>
+            
+            <span className="text-xl leading-none align-baseline price">
+                {value[1] !== undefined ? '.' + value[1] + ' MXN *' : ' MXN *'}
+            </span>
+        </>
+    ) 
+} 
 
 export const SingleProductPage = ({id, name, price, cover}) => {
 

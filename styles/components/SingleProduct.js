@@ -1,10 +1,15 @@
 import tw, { css, styled } from 'twin.macro'
 
 export default {
-    Wrapper: tw.div`min-w-min flex items-start p-5 lg:p-10 overflow-hidden relative`,
+    Wrapper: tw.div`
+        min-w-min flex items-start p-5 overflow-hidden relative
+        lg:(p-10) 
+        `,
 
-    Container: tw.div`w-full max-w-6xl rounded bg-white shadow-xl text-gray-800 relative md:text-left
-                      rounded-lg border-2 border-opacity-30
+    Container: tw.div`
+        w-full max-w-6xl rounded bg-white shadow-xl text-gray-800 relative 
+        rounded-lg border-2 border-opacity-30
+        md:(text-left)
     `,
     
     AddToCartButton: tw.button`
@@ -24,8 +29,9 @@ export default {
         md:(text-lg mr-5 mt-5 )  
         lg:(text-xl) 
     `,
-    QuantityTotalWrapper: tw.div`inline-block align-bottom mr-5 flex flex-wrap justify-between items-center`,
-
+    QuantityTotalWrapper: tw.div`
+        inline-block align-bottom mr-5 flex flex-wrap justify-between items-center
+    `,
     Quantity: styled.div(()=>[
         tw` 
             m-3 text-sm text-left
@@ -39,7 +45,6 @@ export default {
          }
      `
     ]),
-    
     Total: styled.div(()=>[
         tw`
             mr-5 text-right mt-5
