@@ -1,29 +1,34 @@
-# Next.js + Tailwind CSS Example
+# Leonel Castellanos - Carrito Meru 
 
-This example shows how to use [Tailwind CSS](https://tailwindcss.com/) [(v2.2)](https://blog.tailwindcss.com/tailwindcss-2-2) with Next.js. It follows the steps outlined in the official [Tailwind docs](https://tailwindcss.com/docs/guides/nextjs).
+Para correr el proyecto solo hay que clonarlo y ejecutar los siguientes comandos dentro de la carpeta.
 
-It uses the new [`Just-in-Time Mode`](https://tailwindcss.com/docs/just-in-time-mode) for Tailwind CSS.
-
-## Preview
-
-Preview the example live on [StackBlitz](http://stackblitz.com/):
-
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/vercel/next.js/tree/canary/examples/with-tailwindcss)
-
-## Deploy your own
-
-Deploy the example using [Vercel](https://vercel.com?utm_source=github&utm_medium=readme&utm_campaign=next-example):
-
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/git/external?repository-url=https://github.com/vercel/next.js/tree/canary/examples/with-tailwindcss&project-name=with-tailwindcss&repository-name=with-tailwindcss)
-
-## How to use
-
-Execute [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app) with [npm](https://docs.npmjs.com/cli/init) or [Yarn](https://yarnpkg.com/lang/en/docs/cli/create/) to bootstrap the example:
-
+Descargar las dependencias:
 ```bash
-npx create-next-app --example with-tailwindcss with-tailwindcss-app
-# or
-yarn create next-app --example with-tailwindcss with-tailwindcss-app
+yarn
 ```
 
-Deploy it to the cloud with [Vercel](https://vercel.com/new?utm_source=github&utm_medium=readme&utm_campaign=next-example) ([Documentation](https://nextjs.org/docs/deployment)).
+Correr el proyecto:
+```bash
+yarn dev
+```
+
+## Carrito Online
+## [Ir al carrito](https://shopping-cart-meru-leoocast.vercel.app/)
+
+
+## Comentarios
+
+Estuve revisando la página de Meru e intente replicar un poco la misma funcionalidad.
+
+Nunca había usado NextJS ni Tailwind, había escuchado acerca de ellos pero nunca los había usado y la verdad es que estoy sorprendido de todo lo que se puede hacer con esas 2 tecnologías.
+
+Para desarrollar el proyecto estuve estudiando y apoyándome mucho en la documentación, fue un gran reto porque solo tuve unos pocos días para aprender un poco las tecnologías e implementarlas.
+
+Hubo un detalle que no logré resolver, la hidratación de la página. En una parte había diferencias entre 
+el front y el server, aunque desconozco si esto presenta un problema.
+
+Me hubiera gustado hacerlo con typescript, pero al no tener mucho conocimiento del superset, temí que la estructura del proyecto pudiera verse afectada y generar fugas de memoria o algunos problemas que desconozco.
+
+Ya una vez terminado este mini proyecto, me siento muy satisfecho y a la vez me siento confiado en utilizar estás tecnologías, creo que tienen un gran potencial y con un poco más de tiempo podría llegar a realizar mejores cosas, jaja.
+
+Gracias por la oportunidad que me han brindado, espero les agrade mi trabajo ya que me encataría colaborar con ustedes.
