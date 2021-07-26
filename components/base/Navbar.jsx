@@ -8,6 +8,7 @@ import Link from 'next/link'
 import { MenuRoute } from '../../styles/components'
 import { useAppContext } from '../context/'
 import { currencyFormat } from '../../helpers'
+import 'animate.css'
 
 const routes = [
     {
@@ -27,12 +28,11 @@ const Routes = ({isMobile = false}) =>
     const [appContext] = useAppContext()
 
     const totalItems = appContext.cart.reduce((c, n) => c + n.quantity, 0)
-  
-    //Tuve problemas con la hidratación aquí, investigué pero no pude solucionarlo :(
+
     return (
         routes.map(({name, Icon, href}) =>(
             <Link key={name} href={href}>
-                <MenuRoute isMobile={isMobile} className="flex items-center">
+                <MenuRoute isMobile={isMobile} isCart={true} className="flex items-center">
                     <span><Icon/></span>
                     <span>{name}</span>
                     {

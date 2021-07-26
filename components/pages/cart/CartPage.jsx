@@ -7,7 +7,7 @@ import { CartItem } from './CartItem'
 
 export const CartPage = () => {
     
-    const { cart, getTotals, removeItem, updateQuantity } = useCart()
+    const { cart, getTotals, removeItem, updateQuantity, cleanCart } = useCart()
 
     const [ couponAplied, setCouponAplied ] = useState(false)
 
@@ -27,6 +27,10 @@ export const CartPage = () => {
         return () => {
             removeItem(id)
         }
+    }
+
+    const handleCleanCart = () => {
+        cleanCart()
     }
 
     const customQuantityChange = id => {
@@ -65,7 +69,12 @@ return (
                 <div className="flex flex-col w-full p-8 text-gray-800 bg-white shadow-lg pin-r pin-y md:w-4/5 lg:w-4/5 rounded-lg
                         border-2 border-opacity-30">
                     <div className="flex justify-between border-b pb-8">
+                        <div>
                         <h1 className="font-semibold text-2xl">Carrito</h1>
+                        <button onClick={handleCleanCart} type="button" className="text-red-700 md:ml-4">
+                            <small>(Limpiar carrito)</small>
+                        </button>
+                        </div>
                         <h2 className="font-semibold text-2xl">
                             {currencyFormat(totalItems)} {productLabel}
                         </h2>
