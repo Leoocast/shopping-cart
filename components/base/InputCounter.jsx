@@ -36,7 +36,7 @@ export const InputCounter = (options = {exportQuantity: true}, quantityHandler) 
 
     const Component = () => (
     <div className="flex items-center">
-        <Buttons.MinusPlus onClick={increment}>
+        <Buttons.MinusPlus onClick={decrement}>
           <Icons.Minus/>
         </Buttons.MinusPlus>
            

@@ -36,6 +36,13 @@ export const useCart = () => {
         setContext({...appContext, cart: newCart})
     }
 
+    const getItem = id => {
+        
+        const item = cart.find(item => item.id === id)
+        
+        return item
+    }
+
     const updateQuantity = (id, newQuantity) => {
 
         //Cuando se ingresa con teclado, lo lee como string
@@ -68,5 +75,5 @@ export const useCart = () => {
     
         }, {totalItems: 0, totalPrice: 0})
         
-    return {cart, addItem, removeItem, updateQuantity, getTotals, cleanCart}
+    return {cart, addItem, removeItem, updateQuantity, getTotals, cleanCart, getItem}
 }

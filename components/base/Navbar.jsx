@@ -36,9 +36,9 @@ const Routes = ({isMobile = false}) =>
 
     const totalItems = appContext.cart.reduce((c, n) => c + n.quantity, 0)
 
-    return routes.map(({name, Icon, href}) => {
+    const components = routes.map(({name, Icon, href}) => {
 
-        const ReturnComponent = () =>
+        const ReturnComponent = 
         (
             <Link key={name} href={href}>
                 <MenuRoute isMobile={isMobile} isCart={true} className="flex items-center">
@@ -60,6 +60,8 @@ const Routes = ({isMobile = false}) =>
             
         return ReturnComponent
     })
+
+    return components
 }
 
 export const Navbar = () => {

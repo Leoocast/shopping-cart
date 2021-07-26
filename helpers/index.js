@@ -1,4 +1,5 @@
 export { default as Icons } from './icons'
+export { default as messages } from './messages'
 
 export const currencyFormat = number => 
         new Intl.NumberFormat('en-US', {}).format(number)

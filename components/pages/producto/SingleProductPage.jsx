@@ -4,31 +4,57 @@ import { InputCounter } from '../../base/InputCounter'
 import { BreadCrumbs } from '../../base/BreadCrumbs'
 
 import { useCart } from '../../../hooks/useCart'
-import { currencyFormat } from '../../../helpers'
+import { currencyFormat, messages } from '../../../helpers'
 
-const Price = ({value}) => {
-
-    console.log(value)
-
-    return (
-        <>
-            <span className="text-xl leading-none align-baseline price">$</span>
-            <span className="font-bold text-2xl leading-none align-baseline price">{value[0]}</span>
-            
-            <span className="text-xl leading-none align-baseline price">
-                {value[1] !== undefined ? '.' + value[1] + ' MXN *' : ' MXN *'}
-            </span>
-        </>
-    ) 
-} 
+const Price = ({value}) => (
+    <>
+        <span className="text-xl leading-none align-baseline price">$</span>
+        <span className="font-bold text-2xl leading-none align-baseline price">{value[0]}</span>
+        
+        <span className="text-xl leading-none align-baseline price">
+            {value[1] !== undefined ? '.' + value[1] + ' MXN *' : ' MXN *'}
+        </span>
+    </>
+) 
 
 export const SingleProductPage = ({id, name, price, cover}) => {
 
     const [quantity, InputQuantity, setQuantity, blurAffected, setBlurAffected] = InputCounter({exportQuantity: true})
 
-    const { addItem } = useCart()
+    const { addItem, getItem } = useCart()
 
     const customizedPrice = currencyFormat(price * quantity).split('.')
+
+    const hasReachedQuantity = (product, existingProduct) => {
+
+        if(!existingProduct)
+            return false
+
+        const realQuantity = product.quantity + existingProduct.quantity
+
+  
+        if(realQuantity > 125000){
+
+            const exact125000 = 125000 - existingProduct.quantity
+
+            product.quantity = exact125000
+
+            messages.SingleProduct.quantityReached(
+                {
+                    onClose(){
+                        addItem(product)
+                    }
+                }
+            )
+
+            setQuantity(1)
+
+            return true
+        }
+
+        return false
+
+    }
 
     const onClickAddToCart = e => {
 
@@ -46,6 +72,11 @@ export const SingleProductPage = ({id, name, price, cover}) => {
             cover,
             quantity: parseInt(quantity)
         }
+
+        const existingProduct = getItem(id)
+
+        if(hasReachedQuantity(product, existingProduct))
+            return
 
         addItem(product)
         setQuantity(1)
