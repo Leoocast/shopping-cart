@@ -1,5 +1,3 @@
-import React, { useRef, useEffect, useState } from 'react'
-
 import { CartItems } from './CartItems'
 import { CartSummary } from './CartSummary'
 import { CartEmpty } from './CartEmpty'

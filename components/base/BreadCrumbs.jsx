@@ -1,7 +1,6 @@
-import React from 'react'
 import Link from 'next/link'
 
-import { Text } from '../../styles/components'
+import { Text } from '../../styles/global'
 
 export const BreadCrumbs = ({levelName}) => {
     return (

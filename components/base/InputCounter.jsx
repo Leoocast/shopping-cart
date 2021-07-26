@@ -1,8 +1,10 @@
-import React, { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react'
+import { Icons } from '../../helpers'
 
 import { useCounter } from '../../hooks/useCounter'
 
-import { Inputs } from '../../styles/components/'
+import { Inputs, Buttons } from '../../styles/global/'
+
 
 export const InputCounter = (options = {exportQuantity: true}, quantityHandler) => {
 
@@ -33,12 +35,9 @@ export const InputCounter = (options = {exportQuantity: true}, quantityHandler) 
     }
 
     const Component = () => (<>
-        <button 
-            className="transition p-3 h-10 transform hover:scale-125 active:scale-75" 
-            onClick={decrement}>
-            <svg className="fill-current text-gray-600 w-3" viewBox="0 0 448 512"><path d="M416 208H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h384c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z"/>
-            </svg>
-        </button>
+        <Buttons.MinusPlus onClick={increment}>
+          <Icons.Minus/>
+        </Buttons.MinusPlus>
            
         <Inputs.Quantity
             onBlur={handleOnBlur}
@@ -49,14 +48,9 @@ export const InputCounter = (options = {exportQuantity: true}, quantityHandler) 
             placeholder="1" 
             type="number"
         />
-        
-        <button 
-            className="transition p-3 h-10 transform hover:scale-125 active:scale-75" 
-            onClick={increment}>
-            <svg className="fill-current text-gray-600 w-3" viewBox="0 0 448 512">
-                <path d="M416 208H272V64c0-17.67-14.33-32-32-32h-32c-17.67 0-32 14.33-32 32v144H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h144v144c0 17.67 14.33 32 32 32h32c17.67 0 32-14.33 32-32V304h144c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z"/>
-            </svg>
-        </button>   
+        <Buttons.MinusPlus onClick={increment}>
+            <Icons.Plus/>
+        </Buttons.MinusPlus>
     </>)
 
     if(options.exportQuantity)

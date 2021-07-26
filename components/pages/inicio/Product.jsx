@@ -1,5 +1,5 @@
-import React from 'react'
-import { Buttons, Text, ProductContainer } from '../../../styles/components'
+import { ProductContainer } from '../../../styles/components'
+import { Buttons, Text } from '../../../styles/global'
 import { currencyFormat } from '../../../helpers'
 import { ProductImage } from './ProductImage'
 

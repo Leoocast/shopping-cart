@@ -1,6 +1,3 @@
 export { default as MenuRoute } from './MenuRoute'
-export { default as Buttons } from './buttons'
-export { default as Text } from './texts'
 export { default as ProductContainer } from './ProductContainer'
 export { default as SingleProduct } from './SingleProduct'
-export { default as Inputs } from './inputs'

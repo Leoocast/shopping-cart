@@ -1,3 +1,5 @@
+export { default as Icons } from './icons'
+
 export const currencyFormat = number => 
         new Intl.NumberFormat('en-US', {}).format(number)
     

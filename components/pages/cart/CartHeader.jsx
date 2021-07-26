@@ -1,4 +1,3 @@
-import React from 'react'
 import { currencyFormat } from '../../../helpers'
 
 export const CartHeader = ({handleCleanCart, totalItems}) => {

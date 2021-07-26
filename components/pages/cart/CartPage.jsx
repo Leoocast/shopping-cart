@@ -1,4 +1,3 @@
-import React from 'react'
 import dynamic from 'next/dynamic' 
 import { useCart } from '../../../hooks/useCart'
 import { CartHeader } from './CartHeader'
@@ -12,22 +11,11 @@ export const CartPage = () => {
 
     const { totalItems, totalPrice } = getTotals()
 
-    const handleCleanCart = () => {
-        cleanCart()
-    }
+    const handleCleanCart = () => cleanCart()
 
-    const handleRemoveItem = id => {
-        return () => {
-            removeItem(id)
-        }
-    }
+    const handleRemoveItem = id => () => removeItem(id) 
 
-    const customQuantityChange = id => {
-        
-        return newQuantity => {
-            updateQuantity(id, newQuantity)
-        }
-    }
+    const customQuantityChange = id => newQuantity => updateQuantity(id, newQuantity)
   
     return (
     <>

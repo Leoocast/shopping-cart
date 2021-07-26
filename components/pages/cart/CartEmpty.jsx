@@ -1,5 +1,3 @@
-import React from 'react'
-
 export const CartEmpty = () => {
     return (
         <div className="flex justify-center">

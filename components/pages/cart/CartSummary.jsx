@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react'
+import { useState, useRef } from 'react'
 import Swal from 'sweetalert2'
 
 import { currencyFormat } from '../../../helpers'

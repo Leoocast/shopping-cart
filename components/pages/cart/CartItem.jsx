@@ -1,4 +1,3 @@
-import React from 'react'
 import { currencyFormat } from '../../../helpers'
 import { InputCounter } from '../../base/InputCounter'
 
