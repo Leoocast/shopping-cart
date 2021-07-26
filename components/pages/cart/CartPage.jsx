@@ -1,9 +1,10 @@
 import React from 'react'
-import Link from 'next/link'
-
+import dynamic from 'next/dynamic' 
 import { useCart } from '../../../hooks/useCart'
 import { CartHeader } from './CartHeader'
-import { CartBody } from './CartBody'
+
+//Component condicional en el front
+const CartBody = dynamic(() => import("./CartBody").then(mod => mod.CartBody), {ssr: false})
 
 export const CartPage = () => {
     
