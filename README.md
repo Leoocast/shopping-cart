@@ -1,4 +1,4 @@
-# Leonel Castellanos - Carrito Meru 
+# Leo Castellanos - Carrito 
 
 Para correr el proyecto solo hay que clonarlo y ejecutar los siguientes comandos dentro de la carpeta.
 
